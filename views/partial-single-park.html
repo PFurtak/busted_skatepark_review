@@ -1,15 +1,19 @@
 <section class="section">
-    <div class="clearfix">
-        <p>${parkData.address}</p>
-    </div>
-    <div class="clearfix">
-        <ul style="margin-top: 16px;">
-            ${reviewData.map(review => 
-                <li>
-                    <span class="rating" style="display: inline-block; width: 100%;">${review.score} Stars</span>
-                    <p>${review.content}</p>
-                </li>
-            `).join('')}
-        </ul>
-    </div>
+  <div class="clearfix">
+    ${parkData.map(entry => `
+    <p>${entry.address}</p>
+    ` ).join('')}
+  </div>
+  <div class="clearfix">
+    <ul style="margin-top: 16px;">
+      ${reviewData.map(review => `
+      <li>
+        <span class="rating" style="display: inline-block; width: 100%;"
+          >${review.score} Stars</span
+        >
+        <p>${review.content}</p>
+      </li>
+      `).join('')}
+    </ul>
+  </div>
 </section>

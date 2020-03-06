@@ -1,5 +1,6 @@
 const express = require('express'),
-  router = express.Router();
+  ParksModel = require('../models/parks');
+router = express.Router();
 
 /* GET home page. */
 router.get('/', async (req, res, next) => {
@@ -8,7 +9,7 @@ router.get('/', async (req, res, next) => {
   res.render('template', {
     locals: {
       title: 'Time to shred bruh!',
-      parkData: parkList
+      parkList: parkList
     },
     partials: {
       partial: 'partial-index'

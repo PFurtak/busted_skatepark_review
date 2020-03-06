@@ -1,11 +1,11 @@
 <section class="section">
-    <ul class="level">
-        ${parkData.map(park => `
-            <li style="width: 100%">
-                <a href="/parks/${park.id}" class="is-pulled-left">
-                    ${park.name}
-                </a>
-            </li>
-        `).join('')
-    </ul>
+  <ul class="level">
+    ${parkList.map(park => `
+    <li style="width: 100%">
+      <a href="/parks/${park.id}" class="is-pulled-left">
+        ${park.name}
+      </a>
+    </li>
+    `).join('')}
+  </ul>
 </section>

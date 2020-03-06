@@ -1,7 +1,8 @@
 const db = require('./conn.js');
+bcrypt = require('bcryptjs');
 
-class Parks {
-  constructor(id, name) {
+class ParksModel {
+  constructor(id, name, address, picture) {
     this.id = id;
     this.name = name;
     this.address = address;
@@ -10,31 +11,35 @@ class Parks {
 
   static async getAll() {
     try {
-      const response = await db.any(`select * from parks;`);
+      const response = await db.any(`SELECT * FROM parks;`);
       return response;
-    } catch (err) {
-      return err.message;
+    } catch (error) {
+      console.error('ERROR: ', error);
+      return error;
     }
   }
 
   static async getById(p_id) {
     try {
-      const response = await db.one(`select * from parks where id = ${p_id}`);
+      const response = await db.any(`SELECT * FROM parks WHERE id = ${p_id}`);
       return response;
-    } catch (err) {
-      return err.message;
+    } catch (error) {
+      console.error('ERROR: ', error);
+      return error;
     }
   }
 
   static async getReviewsById(p_id) {
     try {
       const response = await db.any(
-        `select * from reviews where park_id = ${p_id}`
+        `SELECT * FROM reviews WHERE park_id = ${p_id}`
       );
-    } catch (err) {
-      return err.message;
+      return response;
+    } catch (error) {
+      console.error('ERROR: ', error);
+      return error;
     }
   }
 }
 
-module.exports = Parks;
+module.exports = ParksModel;
